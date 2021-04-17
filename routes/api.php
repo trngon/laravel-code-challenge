@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('users/register', [\App\Http\Controllers\UserController::class, 'register']);
+Route::post('users/login', [\App\Http\Controllers\UserController::class, 'login']);
+
 Route::middleware('auth:api')
     ->group(function () {
         // Debit card endpoints
@@ -28,4 +31,7 @@ Route::middleware('auth:api')
         Route::get('debit-card-transactions', [DebitCardTransactionController::class, 'index']);
         Route::post('debit-card-transactions', [DebitCardTransactionController::class, 'store']);
         Route::get('debit-card-transactions/{debitCardTransaction}', [DebitCardTransactionController::class, 'show']);
+
+        //test
+        Route::get('users/test', [\App\Http\Controllers\UserController::class, 'test']);
     });
